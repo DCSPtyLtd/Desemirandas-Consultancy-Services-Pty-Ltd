@@ -3,62 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desemirandas Consultancy Services | Translation & Tenders</title>
+    <title>Desemirandas Consultancy Services | Precision & Tenders</title>
     <style>
-        :root { --navy: #0a192f; --slate: #64748b; --gold: #fbbf24; --white: #f8fafc; }
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--white); color: var(--navy); line-height: 1.6; }
-        header { background: var(--navy); color: white; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
-        .hero { background: linear-gradient(rgba(10,25,47,0.8), rgba(10,25,47,0.8)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80'); background-size: cover; height: 80vh; color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px; }
-        .hero h1 { font-size: 3.5rem; margin-bottom: 10px; }
-        .hero p { font-size: 1.2rem; max-width: 600px; margin-bottom: 25px; }
-        .btn { background: var(--gold); color: var(--navy); padding: 12px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; transition: 0.3s; }
-        .btn:hover { background: white; }
-        .section { padding: 80px 10%; text-align: center; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 40px; }
-        .card { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 5px solid var(--gold); }
-        .footer { background: var(--navy); color: var(--slate); padding: 40px; text-align: center; font-size: 0.9rem; }
-        @media (max-width: 768px) { .hero h1 { font-size: 2.2rem; } }
+        :root { 
+            --black: #111111; 
+            --red: #C5111B; /* Match red from logo */
+            --offwhite: #ffffff; 
+            --darkgrey: #333333;
+        }
+        body { font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif; margin: 0; background-color: var(--offwhite); color: var(--black); line-height: 1.8; }
+        
+        /* Header / Nav - logo centered */
+        header { border-bottom: 2px solid var(--red); background: white; padding: 20px 5%; text-align: center; }
+        .logo-placeholder { font-weight: 700; font-size: 1.6rem; text-transform: uppercase; color: var(--black); letter-spacing: 1px; margin-bottom: 10px; }
+        .logo-placeholder span { color: var(--red); }
+        nav { display: flex; justify-content: center; gap: 20px; font-weight: bold; }
+        nav a { text-decoration: none; color: var(--black); font-size: 0.9rem; text-transform: uppercase; transition: 0.3s; }
+        nav a:hover { color: var(--red); }
+
+        /* Hero */
+        .hero { height: 70vh; color: var(--black); display: flex; flex-direction: column; justify-content: center; align-items: flex-start; text-align: left; padding: 0 10%; background: white; }
+        .hero h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 10px; text-transform: uppercase; border-left: 5px solid var(--red); padding-left: 20px; }
+        .hero p { font-size: 1.2rem; max-width: 600px; margin-bottom: 30px; }
+        .btn { background: var(--black); color: white; padding: 15px 40px; text-decoration: none; border-radius: 5px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .btn:hover { background: var(--red); }
+
+        /* Sections */
+        .section { padding: 80px 10%; }
+        h2.section-title { font-size: 2.2rem; text-transform: uppercase; font-weight: 800; margin-bottom: 10px; }
+        .section-title span { color: var(--red); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; margin-top: 50px; }
+        .card { background: white; padding: 40px; border: 1px solid #eee; transition: 0.3s; text-align: center; }
+        .card:hover { border: 1px solid var(--red); box-shadow: 0 5px 15px rgba(197, 17, 27, 0.1); }
+        .card h3 { text-transform: uppercase; color: var(--red); }
+
+        /* Gallery - BW Skyscapers */
+        .gallery { padding: 40px 10%; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; background: #fafafa; }
+        .gallery-item { height: 250px; background-size: cover; background-position: center; filter: grayscale(100%); transition: 0.5s; }
+        .gallery-item:hover { filter: grayscale(0%); transform: scale(1.03); }
+
+        /* Contact Details */
+        .contact-info { background: white; padding: 50px 10%; text-align: center; }
+        .contact-info p { margin: 10px 0; font-size: 1.1rem; }
+        .contact-info strong { color: var(--red); }
+        .contact-info a { color: var(--black); text-decoration: none; border-bottom: 1px solid transparent; }
+        .contact-info a:hover { border-bottom: 1px solid var(--red); color: var(--red); }
+
+        /* Footer */
+        .footer { background: var(--black); color: rgba(255,255,255,0.7); padding: 40px; text-align: center; font-size: 0.8rem; text-transform: uppercase; border-top: 5px solid var(--red); }
+
+        /* Responsive */
+        @media (max-width: 768px) { .hero h1 { font-size: 2.5rem; } nav { flex-direction: column; gap: 10px; } }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <header>
-    <div style="font-weight: bold; font-size: 1.4rem;">Desemirandas</div>
-    <nav>Service | Tenders | Contact</nav>
+    <div class="logo-placeholder">D<span>E</span>SEMIRANDAS</div>
+    <nav>
+        <a href="#services">Services</a>
+        <a href="#tenders">Tenders</a>
+        <a href="#gallery">Portfolio</a>
+        <a href="#contact">Contact</a>
+    </nav>
 </header>
 
 <section class="hero">
-    <h1>Precision in Language.</h1>
-    <p>Bridging gaps with professional translation and expert tender consultancy for eTenders and private contracts.</p>
-    <a href="mailto:info@desemirandas.co.za" class="btn">Get a Quote</a>
+    <h1>Bridging Language.<span></span> Winning Tenders.</h1>
+    <p>Professional Consultancy Services based in Krugersdorp, providing precision translation, interpretation, and strategic guidance for South African eTenders.</p>
+    <a href="#contact" class="btn">Connect Now</a>
 </section>
 
-<section class="section">
-    <h2>Our Core Services</h2>
+<section id="gallery" class="gallery">
+    <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1541976844346-f18aeac57b06?q=80&w=600');"></div>
+    <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1563811771166-f87c12ff9f6d?q=80&w=600');"></div>
+    <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1628186252033-ff393b4ffb01?q=80&w=600');"></div>
+    <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1510714771617-e4359be2c53f?q=80&w=600');"></div>
+</section>
+
+<section id="services" class="section">
+    <h2 class="section-title">Core <span>Services</span></h2>
     <div class="grid">
         <div class="card">
             <h3>Translation</h3>
-            <p>Accurate document translation across all official South African languages, including technical and legal texts.</p>
+            <p>Accurate document translation in all official languages, including technical, legal, and educational texts.</p>
         </div>
         <div class="card">
             <h3>Interpretation</h3>
-            <p>Simultaneous and consecutive interpretation for government, corporate, and SASL (Sign Language) contexts.</p>
+            <p>Expert simultaneous and consecutive interpretation for government, corporate events, and SASL (Sign Language).</p>
         </div>
         <div class="card">
-            <h3>Tender Strategy</h3>
-            <p>Specialized guidance for CSD registration and winning bids on the eTender portal.</p>
+            <h3>CSD Strategy</h3>
+            <p>Navigate eTenders.gov.za. We assist with Central Supplier Database (CSD) registration and bid submission compliance.</p>
         </div>
     </div>
 </section>
 
-<section class="section" style="background: #f1f5f9;">
-    <h2>Visit Us</h2>
-    <p>06 Monument St, Monument, Krugersdorp, 1739</p>
-    <p><strong>Available 24/7</strong></p>
+<section id="contact" class="contact-info">
+    <h2 class="section-title">Connect With <span>Us</span></h2>
+    <p>We are available 24/7. Contact us from Krugersdorp to nationwide.</p>
+    
+    <p><strong>Cell:</strong> <a href="tel:+27723669574">072 366 9574</a></p>
+    <p><strong>Email:</strong> <a href="mailto:dcs.services04@gmail.com">dcs.services04@gmail.com</a></p>
+    <p><strong>Follow:</strong> <a href="https://www.instagram.com/dcs.services04?igsh=MTJndDVhejVkb2hscg==" target="_blank">Instagram</a></p>
 </section>
 
 <div class="footer">
-    <p>&copy; 2026 Desemirandas Consultancy Services (Pty) Ltd. All Rights Reserved.</p>
+    <p>&copy; 2026 Desemirandas Consultancy Services (Pty) Ltd. Krugersdorp, Gauteng.</p>
 </div>
 
 </body>

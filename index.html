@@ -611,28 +611,28 @@
             </div>
 
             <div class="contact-form-panel">
-                <form onsubmit="event.preventDefault(); alert('Transmission Successful. Desemirandas registry will allocate an agent to your inquiry shortly.');">
+                <form id="registryForm" onsubmit="routeToWhatsApp(event)">
                     <div class="form-group">
                         <label>Corporate Entity / Trading Name</label>
-                        <input type="text" class="form-control" placeholder="e.g., Company Pty Ltd" required>
+                        <input type="text" id="compName" class="form-control" placeholder="e.g., Company Pty Ltd" required>
                     </div>
                     <div class="form-group">
                         <label>Secure Contact Number (WhatsApp Enabled)</label>
-                        <input type="tel" class="form-control" placeholder="e.g., 083 123 4567" required>
+                        <input type="tel" id="compPhone" class="form-control" placeholder="e.g., 083 123 4567" required>
                     </div>
                     <div class="form-group">
                         <label>Selected Operations Track</label>
-                        <select class="form-control" required>
+                        <select id="opTrack" class="form-control" required>
                             <option value="">-- Select Framework --</option>
-                            <option value="compliance">All-In-One Compliance & Tender Package</option>
-                            <option value="digital">Web Design & Google Indexing Setup</option>
-                            <option value="language">Linguistic Translation & Boardroom Interpretation</option>
-                            <option value="other">General Consulting Inquiry</option>
+                            <option value="All-In-One Compliance & Tender Package">All-In-One Compliance & Tender Package</option>
+                            <option value="Web Design & Google Indexing Setup">Web Design & Google Indexing Setup</option>
+                            <option value="Linguistic Translation & Boardroom Interpretation">Linguistic Translation & Boardroom Interpretation</option>
+                            <option value="General Consulting Inquiry">General Consulting Inquiry</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label>Operational Scope / Details</label>
-                        <textarea class="form-control" rows="5" placeholder="Outline your corporate requirements..." required></textarea>
+                        <textarea id="opScope" class="form-control" rows="5" placeholder="Outline your corporate requirements..." required></textarea>
                     </div>
                     <button type="submit" class="btn-submit">Submit Query to Registry</button>
                 </form>
@@ -664,6 +664,39 @@
 
             // Smooth scroll to top of viewport on view switch
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function routeToWhatsApp(event) {
+            event.preventDefault();
+
+            // 1. Target destination configuration
+            const targetPayloadNumber = "27723669574"; 
+
+            // 2. Extract registry data fields
+            const company = document.getElementById('compName').value;
+            const phone = document.getElementById('compPhone').value;
+            const track = document.getElementById('opTrack').value;
+            const scope = document.getElementById('opScope').value;
+
+            // 3. Format structured corporate dispatch message
+            const corporateMessage = 
+`*DESEMIRANDAS REGISTRY DISPATCH*
+---------------------------------------
+*TRACK:* ${track}
+*ENTITY:* ${company}
+*CONTACT:* ${phone}
+---------------------------------------
+*OPERATIONAL SCOPE:*
+${scope}`;
+
+            // 4. Clean encode text string for web transit
+            const encodedPayload = encodeURIComponent(corporateMessage);
+
+            // 5. Deploy system transition to WhatsApp interface
+            const systemGatewayUrl = `https://wa.me/${targetPayloadNumber}?text=${encodedPayload}`;
+            
+            // Open secure portal connection
+            window.open(systemGatewayUrl, '_blank');
         }
     </script>
 </body>

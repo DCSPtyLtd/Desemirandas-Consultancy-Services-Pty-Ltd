@@ -695,6 +695,10 @@ ${scope}`;
             // 5. Deploy system transition to WhatsApp interface
             const systemGatewayUrl = `https://wa.me/${targetPayloadNumber}?text=${encodedPayload}`;
             
+            // Direct redirect instead of opening a new tab (bypasses pop-up blockers)
+            window.location.href = systemGatewayUrl;
+        }
+            
             // Open secure portal connection
             window.open(systemGatewayUrl, '_blank');
         }

@@ -3,116 +3,668 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desemirandas Consultancy Services Pty Ltd</title>
+    <title>Desemirandas Consultancy Services (Pty) Ltd</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        :root { --black: #000000; --red: #C5111B; --white: #ffffff; --grey: #f9f9f9; }
-        body { font-family: 'Montserrat', sans-serif; margin: 0; background: var(--white); color: var(--black); line-height: 1.6; scroll-behavior: smooth; }
-        
-        header { background: var(--white); border-bottom: 3px solid var(--black); padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
-        .logo-text { font-weight: 900; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; }
-        .logo-text span { color: var(--red); }
-        nav a { text-decoration: none; color: var(--black); margin-left: 20px; font-weight: 700; text-transform: uppercase; font-size: 0.75rem; transition: 0.3s; }
-        nav a:hover { color: var(--red); }
+        :root {
+            --white: #ffffff;
+            --black: #0a0a0a;
+            --dark-grey: #1a1a1a;
+            --light-grey: #f8f9fa;
+            --border-grey: #e5e7eb;
+            --primary-red: #d32f2f;
+            --hover-red: #b71c1c;
+            --font-main: 'Inter', sans-serif;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-        .hero { padding: 80px 10% 40px; background: var(--white); }
-        .hero h1 { font-size: 3.5rem; text-transform: uppercase; font-weight: 900; line-height: 1.1; margin: 0; }
-        .hero h1 span { color: var(--red); }
-        .hero p { max-width: 700px; font-size: 1.2rem; margin: 25px 0; color: #333; font-weight: 500; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        .gallery-container { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; padding: 0 5%; margin-bottom: 60px; }
-        .gallery-item { height: 350px; background-size: cover; background-position: center; filter: grayscale(100%); transition: 0.5s; border: 1px solid #eee; }
-        .gallery-item:hover { filter: grayscale(0%); transform: scale(1.02); z-index: 2; border-color: var(--red); }
+        body {
+            font-family: var(--font-main);
+            background-color: var(--white);
+            color: var(--black);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-        .section { padding: 80px 10%; }
-        .bg-grey { background: var(--grey); }
-        h2.tag { text-transform: uppercase; font-weight: 900; font-size: 1.8rem; margin-bottom: 40px; border-bottom: 4px solid var(--red); display: inline-block; }
+        /* --- GOVERNMENT/CORPORATE TOP UTILITY BAR --- */
+        .utility-bar {
+            background-color: var(--black);
+            color: var(--white);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 8px 5%;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 3px solid var(--primary-red);
+        }
 
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .service-card { background: white; padding: 35px; border: 1px solid #ddd; transition: 0.3s; }
-        .service-card:hover { border-color: var(--red); box-shadow: 10px 10px 0px var(--black); }
-        .service-card h3 { text-transform: uppercase; font-weight: 800; color: var(--red); margin-top: 0; font-size: 1.1rem; }
-        .service-card ul { padding-left: 18px; margin-top: 15px; font-size: 0.95rem; }
-        .service-card li { margin-bottom: 8px; }
+        .utility-bar span i {
+            color: var(--primary-red);
+            margin-right: 5px;
+        }
 
-        .cta-box { border: 5px solid var(--black); padding: 60px; text-align: center; margin-top: 40px; }
-        .contact-link { display: block; font-size: 1.8rem; font-weight: 900; color: var(--black); text-decoration: none; margin: 10px 0; }
-        .contact-link:hover { color: var(--red); }
-        .ig-btn { display: inline-block; background: var(--red); color: white; padding: 12px 30px; text-decoration: none; font-weight: bold; text-transform: uppercase; margin-top: 20px; }
+        /* --- PREMIUM HEADER & LOGO --- */
+        header {
+            background-color: var(--white);
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-        footer { background: var(--black); color: white; padding: 40px; text-align: center; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; }
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
 
-        @media (max-width: 768px) { .hero h1 { font-size: 2.2rem; } .gallery-container { grid-template-columns: repeat(2, 1fr); } }
+        /* Scaled and stylized text-logo matching your exact visual structure */
+        .logo-mock {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--black);
+            transform: rotate(45deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .logo-icon::before {
+            content: '';
+            width: 12px;
+            height: 12px;
+            background-color: var(--primary-red);
+            position: absolute;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            line-height: 1;
+            color: var(--black);
+        }
+
+        .logo-subtitle {
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            color: var(--dark-grey);
+            margin-top: 4px;
+            border-top: 1px solid var(--border-grey);
+            padding-top: 2px;
+        }
+
+        /* --- PORTAL NAVIGATION --- */
+        nav {
+            display: flex;
+            gap: 5px;
+        }
+
+        .nav-btn {
+            background: none;
+            border: none;
+            font-family: var(--font-main);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 10px 20px;
+            cursor: pointer;
+            color: var(--dark-grey);
+            transition: var(--transition);
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-btn:hover {
+            color: var(--primary-red);
+        }
+
+        .nav-btn.active {
+            color: var(--primary-red);
+            border-bottom: 2px solid var(--primary-red);
+        }
+
+        /* --- HERO BANNER (SANDTON ARCHITECTURE DESIGN) --- */
+        .hero-section {
+            position: relative;
+            height: 400px;
+            background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.75)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            color: var(--white);
+            border-bottom: 5px solid var(--primary-red);
+        }
+
+        .hero-content {
+            max-width: 700px;
+            animation: fadeIn 1s ease;
+        }
+
+        .hero-tag {
+            font-size: 0.85rem;
+            background-color: var(--primary-red);
+            color: var(--white);
+            padding: 5px 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            margin-bottom: 15px;
+        }
+
+        .hero-section p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        /* --- PORTAL PAGES CONTAINER --- */
+        .portal-page {
+            display: none;
+            padding: 60px 5%;
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        .portal-page.active {
+            display: block;
+        }
+
+        .section-header {
+            margin-bottom: 40px;
+            border-left: 5px solid var(--primary-red);
+            padding-left: 20px;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        .section-header p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        /* --- CARD & LAYOUT STYLING --- */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .corporate-card {
+            background: var(--white);
+            border: 1px solid var(--border-grey);
+            border-top: 4px solid var(--black);
+            padding: 35px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .corporate-card:hover {
+            transform: translateY(-5px);
+            border-top-color: var(--primary-red);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+        }
+
+        .card-icon {
+            font-size: 2.2rem;
+            color: var(--black);
+            margin-bottom: 20px;
+        }
+
+        .corporate-card:hover .card-icon {
+            color: var(--primary-red);
+        }
+
+        .corporate-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .corporate-list {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .corporate-list li {
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #444;
+        }
+
+        .corporate-list li i {
+            color: var(--primary-red);
+            font-size: 0.85rem;
+        }
+
+        /* --- HOMEPAGE SPECIFIC GRID (IMAGE + OVERVIEW) --- */
+        .overview-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .overview-text h3 {
+            font-size: 1.7rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .overview-image {
+            height: 450px;
+            background: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80') center/cover no-repeat;
+            border-right: 8px solid var(--primary-red);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+        }
+
+        /* --- CONTACT & DIRECTOR PANEL --- */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 40px;
+        }
+
+        .director-profile {
+            background-color: var(--light-grey);
+            border: 1px solid var(--border-grey);
+            padding: 40px;
+            text-align: center;
+            border-top: 4px solid var(--primary-red);
+        }
+
+        .avatar-placeholder {
+            width: 130px;
+            height: 130px;
+            background-color: var(--black);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 3rem;
+            border: 4px solid var(--white);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .director-profile h3 {
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .director-profile p {
+            color: var(--primary-red);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .info-strip {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            text-align: left;
+            margin-top: 25px;
+            border-top: 1px solid var(--border-grey);
+            padding-top: 25px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 0.95rem;
+        }
+
+        .info-item i {
+            width: 35px;
+            height: 35px;
+            background: var(--black);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-form-panel {
+            border: 1px solid var(--border-grey);
+            padding: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-grey);
+            font-family: var(--font-main);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-red);
+        }
+
+        .btn-submit {
+            background-color: var(--black);
+            color: var(--white);
+            border: none;
+            padding: 15px 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--primary-red);
+        }
+
+        /* --- SYSTEM FOOTER --- */
+        footer {
+            background-color: var(--black);
+            color: #888;
+            padding: 40px 5%;
+            font-size: 0.85rem;
+            border-top: 4px solid var(--primary-red);
+            text-align: center;
+        }
+
+        footer strong {
+            color: var(--white);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 20px; }
+            .overview-block, .contact-wrapper { grid-template-columns: 1fr; }
+            .overview-image { height: 250px; }
+            .hero-section h1 { font-size: 2.2rem; }
+        }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<header>
-    <div class="logo-text">Desemirandas <span>Consultancy</span></div>
-    <nav>
-        <a href="#services">Expertise</a>
-        <a href="#tenders">eTenders</a>
-        <a href="#contact">Contact</a>
-    </nav>
-</header>
+    <div class="utility-bar">
+        <span><i class="fa-solid fa-building-shield"></i> Official Corporate Portal</span>
+        <span>CIPC Registration Compliant &bull; SARS Verified</span>
+    </div>
 
-<section class="hero">
-    <h1>Desemirandas Consultancy<span><br>Services Pty Ltd</span></h1>
-    <p>Premium Linguistic Solutions & Strategic Tender Management. Expertly bridging communication gaps across South Africa.</p>
-</section>
-
-<div class="gallery-container">
-    <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800');"></div>
-    <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1449156059431-787c5d7139b8?q=80&w=800');"></div>
-    <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1503387762-592dee582a1b?q=80&w=800');"></div>
-    <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1470723710355-95304d8aece4?q=80&w=800');"></div>
-    <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1514565131-fce0801e5785?q=80&w=800');"></div>
-</div>
-
-<section id="services" class="section bg-grey">
-    <h2 class="tag">Our Full <span>Service Suite</span></h2>
-    <div class="services-grid">
-        <div class="service-card">
-            <h3>Linguistic Services</h3>
-            <ul>
-                <li><strong>Technical Translation:</strong> Legal, medical, and academic document processing.</li>
-                <li><strong>Multilingual Support:</strong> Handling all 11 official South African languages plus international pairs.</li>
-                <li><strong>Editing & Proofreading:</strong> Ensuring accuracy for high-stakes publications.</li>
-            </ul>
+    <header>
+        <div class="logo-container">
+            <div class="logo-mock">
+                <div class="logo-icon"></div>
+                <div class="logo-text">
+                    <span class="logo-title">DESEMIRANDAS</span>
+                    <span class="logo-subtitle">CONSULTANCY SERVICES</span>
+                </div>
+            </div>
         </div>
-        <div class="service-card">
-            <h3>Interpretation Specialists</h3>
-            <ul>
-                <li><strong>Simultaneous Interpretation:</strong> For government hearings and international conferences.</li>
-                <li><strong>Consecutive Interpretation:</strong> Ideal for legal proceedings and corporate meetings.</li>
-                <li><strong>SASL:</strong> Professional South African Sign Language interpretation services.</li>
-            </ul>
+        <nav>
+            <button class="nav-btn active" onclick="switchPage('home')">Home</button>
+            <button class="nav-btn" onclick="switchPage('services')">Corporate Services</button>
+            <button class="nav-btn" onclick="switchPage('contact')">Secure Contact</button>
+        </nav>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <span class="hero-tag">Executive Infrastructure</span>
+            <h1>Architecting Corporate Legality & Communication</h1>
+            <p>High-tier procurement logistics, end-to-end statutory business compliance, and executive-level international linguistic translation engineered for precision.</p>
         </div>
-        <div class="service-card" id="tenders">
-            <h3>Tender & CSD Strategy</h3>
-            <ul>
-                <li><strong>eTenders Portal:</strong> Sourcing and managing tender submissions nationwide.</li>
-                <li><strong>CSD Registration:</strong> Ensuring your business is fully compliant on the Central Supplier Database.</li>
-                <li><strong>Bid Auditing:</strong> Reviewing documentation to maximize win probability.</li>
-            </ul>
+    </section>
+
+    <main id="home" class="portal-page active">
+        <div class="overview-block">
+            <div class="overview-text">
+                <div class="section-header">
+                    <h2>Enterprise Operations</h2>
+                    <p>South African Corporate Solutions</p>
+                </div>
+                <p style="margin-bottom: 20px; color: #444;">Desemirandas Consultancy Services (Pty) Ltd operates as an authoritative, high-turnaround consultancy specialized in taking businesses from point zero to tender-ready execution, while breaking cross-border linguistic barriers inside executive boardrooms.</p>
+                <p style="color: #444;">From strict cloud architecture deployment to multi-language validation, our performance workflows are built for corporate speed and absolute security.</p>
+            </div>
+            <div class="overview-image"></div>
+        </div>
+
+        <div class="section-header">
+            <h3>Core Functional Frameworks</h3>
+            <p>Select a sector below or navigate via the system portal header</p>
+        </div>
+
+        <div class="grid-3">
+            <div class="corporate-card">
+                <div class="card-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                <h3>Tender & Compliance</h3>
+                <p>Complete execution frameworks to achieve tier-1 procurement status safely and legally.</p>
+                <ul class="corporate-list">
+                    <li><i class="fa-solid fa-chevron-right"></i> CIPC Registration (COR14.3)</li>
+                    <li><i class="fa-solid fa-chevron-right"></i> SARS Income Tax PIN Setup</li>
+                    <li><i class="fa-solid fa-chevron-right"></i> CSD Central Supplier Profile</li>
+                </ul>
+            </div>
+            <div class="corporate-card">
+                <div class="card-icon"><i class="fa-solid fa-language"></i></div>
+                <h3>Language Services</h3>
+                <p>High-level document legal alignment and live physical/digital executive interpretation environments.</p>
+                <ul class="corporate-list">
+                    <li><i class="fa-solid fa-chevron-right"></i> PT | FR | ES Document Localization</li>
+                    <li><i class="fa-solid fa-chevron-right"></i> Corporate Contract Translation</li>
+                    <li><i class="fa-solid fa-chevron-right"></i> Boardroom & Hearing Interpretation</li>
+                </ul>
+            </div>
+            <div class="corporate-card">
+                <div class="card-icon"><i class="fa-solid fa-server"></i></div>
+                <h3>Web & Digital Infrastructure</h3>
+                <p>Premium serverless web presence optimization built with zero monthly overhead liabilities.</p>
+                <ul class="corporate-list">
+                    <li><i class="fa-solid fa-chevron-right"></i> Free GitHub Pages Deployment</li>
+                    <li><i class="fa-solid fa-chevron-right"></i> Deep Google Indexing Systems</li>
+                    <li><i class="fa-solid fa-chevron-right"></i> Localized SEO Dominance</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <div id="services" class="portal-page">
+        <div class="section-header">
+            <h2>Institutional Solutions Directory</h2>
+            <p>Strict operational workflows according to South African regulatory criteria</p>
+        </div>
+
+        <div class="grid-3">
+            <div class="corporate-card" style="border-top-color: var(--primary-red);">
+                <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <h3 style="color: var(--primary-red);">The All-In-One Compliance Package</h3>
+                <p>Complete foundational infrastructure build to make any enterprise completely business-ready within a 48-hour batch window.</p>
+                <ul class="corporate-list">
+                    <li><i class="fa-solid fa-check"></i> <strong>CIPC Registration:</strong> Issuance of official structural registration certificate (COR14.3), Memorandum of Incorporation (MOI), and verified Shareholder Register.</li>
+                    <li><i class="fa-solid fa-check"></i> <strong>Tax Compliance:</strong> Direct SARS system linking, Corporate Tax Registration, and active Tax Clearance PIN delivery.</li>
+                    <li><i class="fa-solid fa-check"></i> <strong>CSD Integration:</strong> Complete National Treasury Central Supplier Database profile generation mapping out active MAAA Numbers.</li>
+                    <li><i class="fa-solid fa-check"></i> <strong>B-BBEE Alignment:</strong> Certified Affidavit generation for immediate valid broad-based black economic empowerment scoring.</li>
+                </ul>
+            </div>
+
+            <div class="corporate-card">
+                <div class="card-icon"><i class="fa-solid fa-sliders"></i></div>
+                <h3>Web Infrastructure & Indexing</h3>
+                <p>Eliminate ongoing host billing completely. High-speed custom technical frameworks that keep your digital assets permanently alive.</p>
+                <ul class="corporate-list">
+                    <li><i class="fa-solid fa-check"></i> <strong>Cloud Hosting Deployment:</strong> Secure migration to premium GitHub Pages environment with exactly R0 continuous monthly hosting fees.</li>
+                    <li><i class="fa-solid fa-check"></i> <strong>Google Indexing:</strong> Direct mapping via Google Search Console and deployment of custom XML Sitemaps for maximum authority.</li>
+                    <li><i class="fa-solid fa-check"></i> <strong>Local SEO Engine:</strong> Tailored keyword structures built to secure local search capture across Gauteng business regions.</li>
+                </ul>
+            </div>
+
+            <div class="corporate-card">
+                <div class="card-icon"><i class="fa-solid fa-gavel"></i></div>
+                <h3>Linguistic Translation & Interpretation</h3>
+                <p>Elite language management structured to preserve perfect conceptual accuracy in legal, economic, and technical scopes.</p>
+                <ul class="corporate-list">
+                    <li><i class="fa-solid fa-check"></i> <strong>Cross-Border Documentation:</strong> Specialized translations processing text seamlessly between English, Portuguese, French, and Spanish.</li>
+                    <li><i class="fa-solid fa-check"></i> <strong>Executive Document Packs:</strong> Legal contracts, company catalogs, technical proposals, and financial portfolios.</li>
+                    <li><i class="fa-solid fa-check"></i> <strong>Live Executive Support:</strong> Elite interpretation services for boardroom meetings, courtroom setups, disciplinary inquiries, and corporate training conferences.</li>
+                </ul>
+            </div>
         </div>
     </div>
-</section>
 
-<section id="contact" class="section">
-    <div class="cta-box">
-        <h2 style="text-transform: uppercase; font-weight: 900;">Work With Us</h2>
-        <p>Available 24/7 for National and International Projects.</p>
-        <a href="tel:+27723669574" class="contact-link">072 366 9574</a>
-        <a href="mailto:dcs.services04@gmail.com" class="contact-link">dcs.services04@gmail.com</a>
-        <p style="margin-top:20px;">06 Monument St, Monument, Krugersdorp, 1739</p>
-        <a href="https://www.instagram.com/dcs.services04?igsh=MTJndDVhejVkb2hscg==" class="ig-btn" target="_blank">Instagram Profile</a>
+    <div id="contact" class="portal-page">
+        <div class="section-header">
+            <h2>Secure Engagement Gateway</h2>
+            <p>Connect directly with executive management</p>
+        </div>
+
+        <div class="contact-wrapper">
+            <div class="director-profile">
+                <div class="avatar-placeholder">
+                    <i class="fa-solid fa-user-tie"></i>
+                </div>
+                <h3>Seumo Miranda Jose</h3>
+                <p>Managing Director / Executive Consultant</p>
+                
+                <div class="info-strip">
+                    <div class="info-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>072 366 9574</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>Dcs.services04@gmail.com</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Gauteng, South Africa</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form-panel">
+                <form onsubmit="event.preventDefault(); alert('Transmission Successful. Desemirandas registry will allocate an agent to your inquiry shortly.');">
+                    <div class="form-group">
+                        <label>Corporate Entity / Trading Name</label>
+                        <input type="text" class="form-control" placeholder="e.g., Company Pty Ltd" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Secure Contact Number (WhatsApp Enabled)</label>
+                        <input type="tel" class="form-control" placeholder="e.g., 083 123 4567" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Selected Operations Track</label>
+                        <select class="form-control" required>
+                            <option value="">-- Select Framework --</option>
+                            <option value="compliance">All-In-One Compliance & Tender Package</option>
+                            <option value="digital">Web Design & Google Indexing Setup</option>
+                            <option value="language">Linguistic Translation & Boardroom Interpretation</option>
+                            <option value="other">General Consulting Inquiry</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Operational Scope / Details</label>
+                        <textarea class="form-control" rows="5" placeholder="Outline your corporate requirements..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Submit Query to Registry</button>
+                </form>
+            </div>
+        </div>
     </div>
-</section>
 
-<footer>
-    &copy; 2026 Desemirandas Consultancy Services Pty Ltd | Precision & Excellence
-</footer>
+    <footer>
+        <p>&copy; 2026 <strong>Desemirandas Consultancy Services (Pty) Ltd</strong>. All Rights Reserved. </p>
+        <p style="font-size: 0.75rem; margin-top: 10px; opacity: 0.5;">Authorized Corporate Registration Profile &bull; Private & Confidential Security Protocols Apply.</p>
+    </footer>
 
+    <script>
+        function switchPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.portal-page');
+            pages.forEach(page => page.classList.remove('active'));
+
+            // Remove active style from all buttons
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+
+            // Find matching button to activate via its inner text or an attribute
+            const clickedBtn = Array.from(buttons).find(btn => btn.getAttribute('onclick').includes(pageId));
+            if (clickedBtn) clickedBtn.classList.add('active');
+
+            // Smooth scroll to top of viewport on view switch
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
 </body>
 </html>
